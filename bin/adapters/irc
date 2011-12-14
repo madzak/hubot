@@ -52,6 +52,11 @@ while read -a line; do
 
   if [ ${line[1]} = 'PRIVMSG' ]; then
     chan="${line[2]}"
+    who="$(echo ${line[0]} | cut -d '!' -f 1)"
+    who=${who:1}
+    if [ $chan = $IRC_NICK ]; then
+      chan=$who
+    fi
     txt="$(echo ${line[@]:3} | tr -d '\n\r')"
     txt=${txt:1}
     list_plugins
