@@ -18,7 +18,7 @@ def fetch_image(query):
     except urllib2.URLError:
         return "Nothing out there buddy, sorry."
        
-    return images[random.randrange(0,len(images))]["unescapedUrl"]
+    return random.choice(images)["unescapedUrl"]
          
 def fetch_results(query):
     url = "http://ajax.googleapis.com/ajax/services/search/images"
